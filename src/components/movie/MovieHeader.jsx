@@ -25,18 +25,6 @@ const MovieTitle = styled.h2`
     font-size: 1rem;
   }
 `;
-const Overlay = styled.div`
-  padding: 20px;
-  position: relative;
-  height: 100%;
-  pointer-events: none;
-  opacity: 1;
-  color: #000;
-  :hover {
-    opacity: 1;
-    pointer-events: all;
-  }
-`;
 const MovieTopDetails = styled.div`
   display: grid;
   grid-template-columns: fit-content(300px) 250px;

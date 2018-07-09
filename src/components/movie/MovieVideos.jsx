@@ -14,11 +14,6 @@ const PlayerWrapper = styled.div`
     margin-top: 10%;
   }
 `;
-const ReactPlayerStyle = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-`;
 
 class MovieVideos extends Component {
   render() {

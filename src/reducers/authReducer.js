@@ -4,6 +4,7 @@ import {
   FETCH_LOGOUT_SUCCESS,
   FETCH_FAV_MOVIES_SUCCESS
 } from "../types/index";
+import { REHYDRATE } from "redux-persist";
 
 const initialState = {
   isAuthenticated: false,
@@ -12,6 +13,12 @@ const initialState = {
 
 export default function(state = initialState, action) {
   switch (action.type) {
+    case REHYDRATE:
+      return {
+        ...state,
+        isAuthenticated: action.payload.auth.isAuthenticated,
+        user: action.payload.auth.user
+      };
     case FETCH_LOGOUT_SUCCESS:
       return {
         ...state,

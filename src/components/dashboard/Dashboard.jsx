@@ -34,6 +34,8 @@ class Dashboard extends Component {
     const { user, movies } = this.props;
     const { isAuthenticated } = this.props.auth;
 
+    console.log(movies);
+
     const FavMoviesDetails = () => {
       return (
         <div>
@@ -46,8 +48,8 @@ class Dashboard extends Component {
     const DashboardDetails = isAuthenticated => {
       return (
         <div>
-          <p>{user.username}</p>
-          <p>{user.email}</p>
+          <p>Username: {user.username}</p>
+          <p>Email: {user.email}</p>
           <FavMoviesDetails />
         </div>
       );
@@ -55,7 +57,7 @@ class Dashboard extends Component {
 
     return (
       <Wrapper>
-        <h4>dashboard</h4>
+        <h4>Dashboard</h4>
         {user !== null ? <DashboardDetails /> : <Loading />}
       </Wrapper>
     );

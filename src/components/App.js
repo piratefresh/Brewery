@@ -24,21 +24,30 @@ const Container = styled.div`
 `;
 
 class App extends Component {
-  componentDidMount() {
-    this.removeListener = auth.onAuthStateChanged(user => {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isAuth: false
+    };
+    this.authFirebaseListene = auth.onAuthStateChanged(user => {
       if (user) {
+        console.log("hello user");
         db.getUser(user.uid).then(snapshot => {
           this.props.fetchLoginRequest(snapshot.val());
           localStorage.setItem("Token", JSON.stringify(snapshot.val()));
         });
+      } else {
+        localStorage.removeItem("Token");
       }
     });
   }
+  componentDidMount() {}
   componentWillUnmount() {
-    this.removeListener();
+    this.authFirebaseListener && this.authFirebaseListener();
     window.localStorage.removeItem("Token");
   }
   render() {
+    console.log(this.state.isAuth);
     return (
       <BrowserRouter>
         <Container>
@@ -57,7 +66,12 @@ class App extends Component {
             {/* Auth Routes */}
             <Route exact path="/account/signin" component={SignIn} />
             <Route exact path="/account/signup" component={SignUp} />
-            <Route exact path="/dashboard" component={Dashboard} />
+            <PrivateRoute
+              exact
+              path="/dashboard"
+              component={Dashboard}
+              isAuth={this.state.isAuth}
+            />
             <Route render={() => <p className="text-error">Not Found</p>} />
           </Switch>
         </Container>

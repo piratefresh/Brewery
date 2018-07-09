@@ -5,11 +5,9 @@ import {
   FETCH_LOGIN_REQUEST,
   FETCH_LOGIN_SUCCESS,
   FETCH_LOGOUT_REQUEST,
-  FETCH_LOGOUT_SUCCESS,
-  FETCH_FAV_MOVIES_REQUEST,
-  FETCH_FAV_MOVIES_SUCCESS
+  FETCH_LOGOUT_SUCCESS
 } from "../types/index";
-import { auth, db } from "../firebase/firebase";
+import { auth } from "../firebase/firebase";
 
 function handleError(error) {
   console.warn(error);
@@ -18,10 +16,6 @@ function handleError(error) {
 
 export const fetchAuthRequest = () => ({
   type: FETCH_AUTH_REQUEST
-});
-export const fetchFavMovieRequest = id => ({
-  type: FETCH_FAV_MOVIES_REQUEST,
-  id
 });
 export const fetchLogoutRequest = () => ({
   type: FETCH_LOGOUT_REQUEST

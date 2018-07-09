@@ -68,6 +68,7 @@ class SignUp extends Component {
         var errorCode = error.code;
         var errorMessage = error.message;
       });
+    this.props.history.push("/");
     event.preventDefault();
   };
 
