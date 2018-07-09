@@ -9,7 +9,7 @@ const sagaMiddleware = createSagaMiddleware();
 
 export const store = createStore(
   combineReducers,
-  composeWithDevTools(applyMiddleware(sagaMiddleware))
+  compose(applyMiddleware(sagaMiddleware))
 );
 
 sagaMiddleware.run(mySaga);
